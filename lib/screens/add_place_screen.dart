@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locmap/widgets/image_picker.dart';
+import 'package:locmap/widgets/image_input.dart';
 
 class AddPlaceScreen extends StatefulWidget {
   static const routeName = "/addPlaceScreen";
