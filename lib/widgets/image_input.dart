@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class ImageInput extends StatefulWidget {
+  Function setImageInput;
+  ImageInput(this.setImageInput);
   @override
   _ImageInputState createState() => _ImageInputState();
 }
@@ -17,6 +19,7 @@ class _ImageInputState extends State<ImageInput> {
       source: ImageSource.camera,
       maxWidth: 600,
     );
+    if (imageFile == null) return;
     setState(() {
       // print(imageFile.path);
       _storedImage = File(imageFile.path);
@@ -25,7 +28,7 @@ class _ImageInputState extends State<ImageInput> {
     final fileName = path.basename(imageFile.path);
     final savedImage =
         await File(imageFile.path).copy('${appDir.path}/$fileName');
-    print(savedImage);
+    widget.setImageInput(savedImage);
   }
 
   @override
